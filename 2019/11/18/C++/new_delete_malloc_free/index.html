@@ -94,17 +94,20 @@
 
 
 
-  <meta name="description" content="技术，经验">
+  <meta name="description" content="new,delete,malloc,free的关系区别new的执行过程 通过operator new 申请内存 使用placement new调用构造函数(内置类型没有此过程) 返回内存指针  new和malloc的比较 new失败时会调用抛出bad_alloc异常，malloc不会，失败时返回NULL new能通过placement new自动调用对象的构造函数，malloc不会 new出来的东">
+<meta name="keywords" content="new malloc的区别">
 <meta property="og:type" content="article">
-<meta property="og:title" content="post">
-<meta property="og:url" content="http://yoursite.com/2019/11/18/Aboutme-1/index.html">
+<meta property="og:title" content="new,delete,malloc,free的关系 ">
+<meta property="og:url" content="http://yoursite.com/2019/11/18/C++/new_delete_malloc_free/index.html">
 <meta property="og:site_name" content="优雅的代码狗">
-<meta property="og:description" content="技术，经验">
+<meta property="og:description" content="new,delete,malloc,free的关系区别new的执行过程 通过operator new 申请内存 使用placement new调用构造函数(内置类型没有此过程) 返回内存指针  new和malloc的比较 new失败时会调用抛出bad_alloc异常，malloc不会，失败时返回NULL new能通过placement new自动调用对象的构造函数，malloc不会 new出来的东">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-18T13:48:26.363Z">
+<meta property="og:image" content="http://yoursite.com/2019/11/18/C++/new_delete_malloc_free/01.png">
+<meta property="og:updated_time" content="2019-11-18T15:13:19.006Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="post">
-<meta name="twitter:description" content="技术，经验">
+<meta name="twitter:title" content="new,delete,malloc,free的关系 ">
+<meta name="twitter:description" content="new,delete,malloc,free的关系区别new的执行过程 通过operator new 申请内存 使用placement new调用构造函数(内置类型没有此过程) 返回内存指针  new和malloc的比较 new失败时会调用抛出bad_alloc异常，malloc不会，失败时返回NULL new能通过placement new自动调用对象的构造函数，malloc不会 new出来的东">
+<meta name="twitter:image" content="http://yoursite.com/2019/11/18/C++/new_delete_malloc_free/01.png">
 
 
 
@@ -112,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/11/18/Aboutme-1/">
+  <link rel="canonical" href="http://yoursite.com/2019/11/18/C++/new_delete_malloc_free/">
 
 
 
@@ -122,7 +125,7 @@
   };
 </script>
 
-  <title>post | 优雅的代码狗</title>
+  <title>new,delete,malloc,free的关系  | 优雅的代码狗</title>
   
 
 
@@ -321,7 +324,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/18/Aboutme-1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/18/C++/new_delete_malloc_free/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="优雅的代码狗">
@@ -338,7 +341,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">post
+          <h1 class="post-title" itemprop="name headline">new,delete,malloc,free的关系 
 
               
             
@@ -364,12 +367,31 @@
                 
               
 
-              <time title="Created: 2019-11-18 21:48:26" itemprop="dateCreated datePublished" datetime="2019-11-18T21:48:26+08:00">2019-11-18</time>
+              <time title="Created: 2019-11-18 21:57:38 / Modified: 23:13:19" itemprop="dateCreated datePublished" datetime="2019-11-18T21:57:38+08:00">2019-11-18</time>
             </span>
           
 
           
+            
 
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -402,7 +424,50 @@
       
 
       
-        
+        <h1 id="new-delete-malloc-free的关系"><a href="#new-delete-malloc-free的关系" class="headerlink" title="new,delete,malloc,free的关系"></a>new,delete,malloc,free的关系</h1><h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><h3 id="new的执行过程"><a href="#new的执行过程" class="headerlink" title="new的执行过程"></a>new的执行过程</h3><ol>
+<li>通过operator new 申请内存</li>
+<li>使用placement new调用构造函数(内置类型没有此过程)</li>
+<li>返回内存指针</li>
+</ol>
+<h3 id="new和malloc的比较"><a href="#new和malloc的比较" class="headerlink" title="new和malloc的比较"></a>new和malloc的比较</h3><ol>
+<li>new失败时会调用抛出bad_alloc异常，malloc不会，失败时返回NULL</li>
+<li>new能通过placement new自动调用对象的构造函数，malloc不会</li>
+<li>new出来的东西是带类型的，而malloc返回的是void* 类型，需要强制转换</li>
+<li>new是C++运算符，malloc是C标准函数</li>
+<li>new是在自由存储区开空间。而malloc只能在堆上开辟空间<br>注：自由存储是C++中通过new与delete动态分配和释放对象的抽象概念</li>
+</ol>
+<h3 id="delete的执行过程"><a href="#delete的执行过程" class="headerlink" title="delete的执行过程"></a>delete的执行过程</h3><ol>
+<li>调用析构函数(内置类型没有此过程)</li>
+<li>释放内存</li>
+</ol>
+<h3 id="delete和free的比较"><a href="#delete和free的比较" class="headerlink" title="delete和free的比较"></a>delete和free的比较</h3><ol>
+<li>delete能自动调用对象的析构函数,malloc不会</li>
+<li>delete是C++运算符，free是C标准库函数</li>
+</ol>
+<h3 id="new运算符"><a href="#new运算符" class="headerlink" title="new运算符"></a>new运算符</h3><ol>
+<li>调用operator new分配足够的空间(底层用malloc)(placement new除外)，并调用相关对象的构造函数,返回对象地址。</li>
+<li>不可以被重载</li>
+</ol>
+<h3 id="operator-new"><a href="#operator-new" class="headerlink" title="operator new"></a>operator new</h3><ol>
+<li>只分配所要求的空间，不调用相关对象的构造函数。当无法满足所要求分配的空间时，则会抛出异常</li>
+<li>可以被重载</li>
+<li>重载时，返回类型必须声明为void*</li>
+<li>重载时，第一个参数必须为表达要求分配空间的大小</li>
+<li>重载时，可以带其他参数</li>
+</ol>
+<h3 id="operator-new-和-placement-new的关系"><a href="#operator-new-和-placement-new的关系" class="headerlink" title="operator new 和 placement new的关系"></a>operator new 和 placement new的关系</h3><p>placement new 只是operator new 的一个重载的版本，如果你想在已经分配的内存中创建一个对象，使用new是不行的。placement new 允许你在一个已经分配好的内存中（栈或堆中）构造一个新的对象。</p>
+<h4 id="placement-new有什么好处？"><a href="#placement-new有什么好处？" class="headerlink" title="placement new有什么好处？"></a>placement new有什么好处？</h4><p>首先new操作符分配内存需要在堆中查找足够大的剩余空间，这个操作速度是很慢的，而且有可能出现无法分配内存的异常（空间不够）。placement new就可以解决这个问题。我们构造对象都是在一个预先准备好了的内存缓冲区中进行，不需要查找内存，内存分配的时间是常数。而且不会出现在程序运行中途出现内存不足的异常。所以，placement new非常适合那些对时间要求比较高，长时间运行不希望被打断的应用程序。</p>
+<h3 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h3><ol>
+<li>首先调用析构函数</li>
+<li>调用operator delete()</li>
+<li>free()释放空间</li>
+</ol>
+<h2 id="new-delete-和-new-delete-的区别"><a href="#new-delete-和-new-delete-的区别" class="headerlink" title="new delete 和 new[] delete[]的区别"></a>new delete 和 new[] delete[]的区别</h2><h3 id="new-N"><a href="#new-N" class="headerlink" title="new[N]"></a>new[N]</h3><ol>
+<li>调用operator new 分配空间。</li>
+<li>调用N次构造函数来初始化对象。<br>注：在此同时会在多开四个字节的空间在头上用来记录调用了多少次构造函数，这也就决定了用多少次析构函数来清理空间<br><img src="../new_delete_malloc_free/01.png" alt="本地图片"></li>
+</ol>
+<p>所以这里就可以解释为什么new[] 要配对delete[], 不仅仅是因为只析构一次，这不是程序崩溃的原因，主要是释放位置错误，因为new不会多开四个字节。</p>
+
       
     </div>
 
@@ -423,6 +488,15 @@
 
     <footer class="post-footer">
       
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/new-malloc的区别/" rel="tag"># new malloc的区别</a>
+          
+        </div>
+      
 
       
       
@@ -432,8 +506,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/02/MarkdownExplain/" rel="next" title="Markdown常用语法">
-                <i class="fa fa-chevron-left"></i> Markdown常用语法
+              <a href="/2019/11/18/Aboutme-1/" rel="next" title="post">
+                <i class="fa fa-chevron-left"></i> post
               </a>
             
           </div>
@@ -441,10 +515,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/18/C++/new_delete_malloc_free/" rel="prev" title="new,delete,malloc,free的关系 ">
-                new,delete,malloc,free的关系  <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -488,8 +558,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -599,6 +678,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#new-delete-malloc-free的关系"><span class="nav-number">1.</span> <span class="nav-text">new,delete,malloc,free的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#区别"><span class="nav-number">1.1.</span> <span class="nav-text">区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#new的执行过程"><span class="nav-number">1.1.1.</span> <span class="nav-text">new的执行过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#new和malloc的比较"><span class="nav-number">1.1.2.</span> <span class="nav-text">new和malloc的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete的执行过程"><span class="nav-number">1.1.3.</span> <span class="nav-text">delete的执行过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete和free的比较"><span class="nav-number">1.1.4.</span> <span class="nav-text">delete和free的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#new运算符"><span class="nav-number">1.1.5.</span> <span class="nav-text">new运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#operator-new"><span class="nav-number">1.1.6.</span> <span class="nav-text">operator new</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#operator-new-和-placement-new的关系"><span class="nav-number">1.1.7.</span> <span class="nav-text">operator new 和 placement new的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#placement-new有什么好处？"><span class="nav-number">1.1.7.1.</span> <span class="nav-text">placement new有什么好处？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete"><span class="nav-number">1.1.8.</span> <span class="nav-text">delete</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new-delete-和-new-delete-的区别"><span class="nav-number">1.2.</span> <span class="nav-text">new delete 和 new[] delete[]的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#new-N"><span class="nav-number">1.2.1.</span> <span class="nav-text">new[N]</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
