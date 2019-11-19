@@ -94,18 +94,21 @@
 
 
 
-  <meta name="description" content="关于浮点数这是昨天面试遇到的一道题,当然我肯定是没说出来啦(手动狗头)今天参考了一下博客总结在此 首先，浮点是在计算机当中的二进制表达方式就决定了大多数浮点数都是无法精确的表达的 float类型，精度也只有7位，如果直接相等，这个精度往往会导致运算的结果和实际期望的结果之间有误差![本地图片][../如何判断两个浮点数相等/01.png]![本地图片][../如何判断两个浮点数相等/02.png]">
+  <meta name="description" content="关于浮点数这是昨天面试遇到的一道题,当然我肯定是没说出来啦(手动狗头)今天参考了一下博客总结在此 首先，浮点是在计算机当中的二进制表达方式就决定了大多数浮点数都是无法精确的表达的 float类型，精度也只有7位，如果直接相等，这个精度往往会导致运算的结果和实际期望的结果之间有误差">
 <meta name="keywords" content="面试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何判断两个浮点数相等">
 <meta property="og:url" content="http://yoursite.com/2019/11/19/面试/如何判断两个浮点数相等/index.html">
 <meta property="og:site_name" content="优雅的代码狗">
-<meta property="og:description" content="关于浮点数这是昨天面试遇到的一道题,当然我肯定是没说出来啦(手动狗头)今天参考了一下博客总结在此 首先，浮点是在计算机当中的二进制表达方式就决定了大多数浮点数都是无法精确的表达的 float类型，精度也只有7位，如果直接相等，这个精度往往会导致运算的结果和实际期望的结果之间有误差![本地图片][../如何判断两个浮点数相等/01.png]![本地图片][../如何判断两个浮点数相等/02.png]">
+<meta property="og:description" content="关于浮点数这是昨天面试遇到的一道题,当然我肯定是没说出来啦(手动狗头)今天参考了一下博客总结在此 首先，浮点是在计算机当中的二进制表达方式就决定了大多数浮点数都是无法精确的表达的 float类型，精度也只有7位，如果直接相等，这个精度往往会导致运算的结果和实际期望的结果之间有误差">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-19T08:02:11.533Z">
+<meta property="og:image" content="http://yoursite.com/2019/11/19/面试/%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9B%B8%E7%AD%89/01.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/19/面试/%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9B%B8%E7%AD%89/02.png">
+<meta property="og:updated_time" content="2019-11-19T08:10:44.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何判断两个浮点数相等">
-<meta name="twitter:description" content="关于浮点数这是昨天面试遇到的一道题,当然我肯定是没说出来啦(手动狗头)今天参考了一下博客总结在此 首先，浮点是在计算机当中的二进制表达方式就决定了大多数浮点数都是无法精确的表达的 float类型，精度也只有7位，如果直接相等，这个精度往往会导致运算的结果和实际期望的结果之间有误差![本地图片][../如何判断两个浮点数相等/01.png]![本地图片][../如何判断两个浮点数相等/02.png]">
+<meta name="twitter:description" content="关于浮点数这是昨天面试遇到的一道题,当然我肯定是没说出来啦(手动狗头)今天参考了一下博客总结在此 首先，浮点是在计算机当中的二进制表达方式就决定了大多数浮点数都是无法精确的表达的 float类型，精度也只有7位，如果直接相等，这个精度往往会导致运算的结果和实际期望的结果之间有误差">
+<meta name="twitter:image" content="http://yoursite.com/2019/11/19/面试/%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9B%B8%E7%AD%89/01.png">
 
 
 
@@ -365,7 +368,7 @@
                 
               
 
-              <time title="Created: 2019-11-19 09:19:33 / Modified: 16:02:11" itemprop="dateCreated datePublished" datetime="2019-11-19T09:19:33+08:00">2019-11-19</time>
+              <time title="Created: 2019-11-19 09:19:33 / Modified: 16:10:44" itemprop="dateCreated datePublished" datetime="2019-11-19T09:19:33+08:00">2019-11-19</time>
             </span>
           
 
@@ -424,7 +427,7 @@
       
         <h2 id="关于浮点数"><a href="#关于浮点数" class="headerlink" title="关于浮点数"></a>关于浮点数</h2><p>这是昨天面试遇到的一道题,当然我肯定是没说出来啦(手动狗头)<br>今天参考了一下博客总结在此</p>
 <p>首先，浮点是在计算机当中的二进制表达方式就决定了大多数浮点数都是无法精确的表达的</p>
-<p>float类型，精度也只有7位，如果直接相等，这个精度往往会导致运算的结果和实际期望的结果之间有误差<br>![本地图片][../如何判断两个浮点数相等/01.png]<br>![本地图片][../如何判断两个浮点数相等/02.png]</p>
+<p>float类型，精度也只有7位，如果直接相等，这个精度往往会导致运算的结果和实际期望的结果之间有误差<br><img src="../%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9B%B8%E7%AD%89/01.png" alt="本地图片"><br><img src="../%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9B%B8%E7%AD%89/02.png" alt="本地图片"></p>
 
       
     </div>
