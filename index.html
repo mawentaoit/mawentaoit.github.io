@@ -425,51 +425,25 @@
       
         
           
-            <h1 id="new-delete-malloc-free的关系"><a href="#new-delete-malloc-free的关系" class="headerlink" title="new,delete,malloc,free的关系"></a>new,delete,malloc,free的关系</h1><h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><h3 id="new的执行过程"><a href="#new的执行过程" class="headerlink" title="new的执行过程"></a>new的执行过程</h3><ol>
-<li>通过operator new 申请内存</li>
-<li>使用placement new调用构造函数(内置类型没有此过程)</li>
-<li>返回内存指针</li>
-</ol>
-<h3 id="new和malloc的比较"><a href="#new和malloc的比较" class="headerlink" title="new和malloc的比较"></a>new和malloc的比较</h3><ol>
-<li>new失败时会调用抛出bad_alloc异常，malloc不会，失败时返回NULL</li>
-<li>new能通过placement new自动调用对象的构造函数，malloc不会</li>
-<li>new出来的东西是带类型的，而malloc返回的是void* 类型，需要强制转换</li>
-<li>new是C++运算符，malloc是C标准函数</li>
-<li>new是在自由存储区开空间。而malloc只能在堆上开辟空间<br>注：自由存储是C++中通过new与delete动态分配和释放对象的抽象概念</li>
-</ol>
-<h3 id="delete的执行过程"><a href="#delete的执行过程" class="headerlink" title="delete的执行过程"></a>delete的执行过程</h3><ol>
-<li>调用析构函数(内置类型没有此过程)</li>
-<li>释放内存</li>
-</ol>
-<h3 id="delete和free的比较"><a href="#delete和free的比较" class="headerlink" title="delete和free的比较"></a>delete和free的比较</h3><ol>
-<li>delete能自动调用对象的析构函数,malloc不会</li>
-<li>delete是C++运算符，free是C标准库函数</li>
-</ol>
-<h3 id="new运算符"><a href="#new运算符" class="headerlink" title="new运算符"></a>new运算符</h3><ol>
-<li>调用operator new分配足够的空间(底层用malloc)(placement new除外)，并调用相关对象的构造函数,返回对象地址。</li>
-<li>不可以被重载</li>
-</ol>
-<h3 id="operator-new"><a href="#operator-new" class="headerlink" title="operator new"></a>operator new</h3><ol>
-<li>只分配所要求的空间，不调用相关对象的构造函数。当无法满足所要求分配的空间时，则会抛出异常</li>
-<li>可以被重载</li>
-<li>重载时，返回类型必须声明为void*</li>
-<li>重载时，第一个参数必须为表达要求分配空间的大小</li>
-<li>重载时，可以带其他参数</li>
-</ol>
-<h3 id="operator-new-和-placement-new的关系"><a href="#operator-new-和-placement-new的关系" class="headerlink" title="operator new 和 placement new的关系"></a>operator new 和 placement new的关系</h3><p>placement new 只是operator new 的一个重载的版本，如果你想在已经分配的内存中创建一个对象，使用new是不行的。placement new 允许你在一个已经分配好的内存中（栈或堆中）构造一个新的对象。</p>
-<h4 id="placement-new有什么好处？"><a href="#placement-new有什么好处？" class="headerlink" title="placement new有什么好处？"></a>placement new有什么好处？</h4><p>首先new操作符分配内存需要在堆中查找足够大的剩余空间，这个操作速度是很慢的，而且有可能出现无法分配内存的异常（空间不够）。placement new就可以解决这个问题。我们构造对象都是在一个预先准备好了的内存缓冲区中进行，不需要查找内存，内存分配的时间是常数。而且不会出现在程序运行中途出现内存不足的异常。所以，placement new非常适合那些对时间要求比较高，长时间运行不希望被打断的应用程序。</p>
-<h3 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h3><ol>
-<li>首先调用析构函数</li>
-<li>调用operator delete()</li>
-<li>free()释放空间</li>
-</ol>
-<h2 id="new-delete-和-new-delete-的区别"><a href="#new-delete-和-new-delete-的区别" class="headerlink" title="new delete 和 new[] delete[]的区别"></a>new delete 和 new[] delete[]的区别</h2><h3 id="new-N"><a href="#new-N" class="headerlink" title="new[N]"></a>new[N]</h3><ol>
-<li>调用operator new 分配空间。</li>
-<li>调用N次构造函数来初始化对象。<br>注：在此同时会在多开四个字节的空间在头上用来记录调用了多少次构造函数，这也就决定了用多少次析构函数来清理空间<br><img src="../new_delete_malloc_free/01.png" alt="本地图片"></li>
-</ol>
-<p>所以这里就可以解释为什么new[] 要配对delete[], 不仅仅是因为只析构一次，这不是程序崩溃的原因，主要是释放位置错误，因为new不会多开四个字节。</p>
+            <p>
+              new,delete,malloc,free的关系区别new的执行过程
+通过operator new 申请内存
+使用placement new调用构造函数(内置类型没有此过程)
+返回内存指针
 
+new和malloc的比较
+new失败时会调用抛出bad_alloc异常，malloc不会，失败时返回NU
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/11/18/C++/new_delete_malloc_free/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -609,8 +583,19 @@
       
         
           
-            
+            <p>
+              
+              
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/11/18/Aboutme-1/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -779,133 +764,24 @@
       
         
           
-            <h2 id="Markdown语法汇总"><a href="#Markdown语法汇总" class="headerlink" title="Markdown语法汇总"></a>Markdown语法汇总</h2><p><strong>因为写此博客需要在使用markdown标记语言进行记录，所以首先展示常用的markdown语法</strong></p>
-<h4 id="1-行内代码"><a href="#1-行内代码" class="headerlink" title="(1) 行内代码"></a>(1) 行内代码</h4><ol>
-<li>代码示例<br><code>用</code> 表示行间代码，通常行间代码会加上底色`</li>
-</ol>
-<p><strong>效果</strong><br><code>这是行间代码</code><br><code>This is inline code</code></p>
-<h3 id="2-制作标题"><a href="#2-制作标题" class="headerlink" title="(2) 制作标题"></a>(2) 制作标题</h3><p>可以通过在文字左边添加#来表示标题,且#的数量决定了标题的级别，最多可以表示六级标题，级使用六个#</p>
-<ol>
-<li>代码示例</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br></pre></td></tr></table></figure>
+            <p>
+              Markdown语法汇总因为写此博客需要在使用markdown标记语言进行记录，所以首先展示常用的markdown语法
+(1) 行内代码
+代码示例用 表示行间代码，通常行间代码会加上底色`
 
-<ol start="2">
-<li>效果</li>
-</ol>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h3 id="3-更改字体"><a href="#3-更改字体" class="headerlink" title="(3) 更改字体"></a>(3) 更改字体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">粗体: 用一对**表示强调，被强调的文字以粗体显示.</span><br><span class="line">斜体: 用一对*表示斜体.</span><br></pre></td></tr></table></figure>
-
-<p><strong>这是粗体</strong><br><em>这是斜体</em></p>
-<h3 id="4-代码块工具"><a href="#4-代码块工具" class="headerlink" title="(4) 代码块工具"></a>(4) 代码块工具</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">代码快用一对```括起来，在第一个```后面紧跟语言的名称即可。</span><br><span class="line"></span><br><span class="line">插入代码的方式有两种</span><br><span class="line"></span><br><span class="line">1.在每行代码前加入4个空格或者添加一个制表符（TAB键）</span><br><span class="line">2.在代码两侧添加三个反引号‘```’。</span><br></pre></td></tr></table></figure>
-
-<p>示例</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Hello World\n"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-分隔符"><a href="#5-分隔符" class="headerlink" title="(5) 分隔符"></a>(5) 分隔符</h3><p>1.tab<br>2.三个以上的***
-3.三个以上的—</p>
-<h3 id="6-行内标记"><a href="#6-行内标记" class="headerlink" title="(6) 行内标记"></a>(6) 行内标记</h3><ol>
-<li>斜体<br>语法：使用前后各 1 个 *(或_) 包含的文字是 斜体 文字<br>效果:</li>
-</ol>
-<p><em>斜体</em><br><em>斜体</em></p>
-<ol start="2">
-<li>粗体<br>语法：使用前后各 2 个 (或_) 包含的文字是粗体*文字<br>效果:</li>
-</ol>
-<p><strong>粗体</strong><br><strong>粗体</strong></p>
-<ol start="3">
-<li><p>删除文字<br>语法：使用前后各 2 个 ~ 包含的文字是删除文字<br>示例代码<br><code>~删除~</code><br>效果:<br><del>删除</del></p>
-</li>
-<li><p>粗斜体<br>语法：在*(或_)中嵌套 (或) 或 在_(或)中嵌套**(或__)即可得到 粗斜体。<br>示例代码:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_**粗斜体**_， *__粗斜体__*</span><br><span class="line">**_粗斜体_**， __*粗斜体*__</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>效果:<br><em><strong>粗斜体</strong><em>， *<em>_粗斜体</em></em>*
-**_粗斜体</em><em>*， __</em>粗斜体*__</p>
-<h3 id="7-列表工具"><a href="#7-列表工具" class="headerlink" title="(7)列表工具"></a>(7)列表工具</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 在Markdown的语法中，我们可以使用1.、2.表示有序列表，</span><br><span class="line">即数字+点，不过注意序号和后面文字必须得有空格。  </span><br><span class="line">2. 列表用“-”或者“*”表示，同样的，-和*和后年的文字间必须有空格。  </span><br><span class="line">且通过按tab键可以实现列表的嵌套。</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>无序列表<br>a. 代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- 这是无序列表</span><br><span class="line">- 这是无序列表</span><br><span class="line">    - 这是无序列表</span><br><span class="line">    - 这是无序列表</span><br><span class="line">- 这是无序列表</span><br><span class="line">- 这是无序列表</span><br><span class="line">* 这是无序列表</span><br><span class="line">* 这是无序列表</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>b. 效果</p>
-<ul>
-<li>这是无序列表</li>
-<li>这是无序列表<ul>
-<li>这是无序列表</li>
-<li>这是无序列表</li>
-</ul>
-</li>
-<li>这是无序列表</li>
-<li>这是无序列表</li>
-</ul>
-<ul>
-<li>这是无序列表</li>
-<li>这是无序列表</li>
-</ul>
-<ol start="2">
-<li>有序列表<br>a. 代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 这是有序列表</span><br><span class="line">2. 这是有序列表</span><br><span class="line">3. 这是有序列表</span><br><span class="line">4. 这是有序列表</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>b. 效果</p>
-<ol>
-<li>这是有序列表</li>
-<li>这是有序列表</li>
-<li>这是有序列表</li>
-<li>这是有序列表</li>
-</ol>
-<h3 id="8-引用工具"><a href="#8-引用工具" class="headerlink" title="(8) 引用工具"></a>(8) 引用工具</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Markdown中，用符号&gt;开启一行引用，如果文字有多行则用多个&gt;，</span><br><span class="line">同样地&gt;和文字间必须有空格。</span><br><span class="line">这里补充一点：在Markdown中，空格+空格+Enter为换行，</span><br><span class="line">而Enter为另起一段落，这在书写引用时是非常重要的</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li><p>代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 这是引用  </span><br><span class="line">&gt; 换行请按`空格+空格+Enter`  </span><br><span class="line">&gt; 这是引用</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>效果</p>
-<blockquote>
-<p>这是引用<br>换行请按<code>空格+空格+Enter</code><br>这是引用</p>
-</blockquote>
-</li>
-<li><p>注意</p>
-<blockquote>
-<p>大于号和文字必须有一个空格<br>可以在每行之前都加&gt;, 也可以在一个段落之前加一个&gt;<br>引用内部可以使用其他Markdown标记</p>
-<blockquote>
-<p>引用内部可以添加新的引用，只需再加一个大于号</p>
-</blockquote>
-</blockquote>
-</li>
-</ol>
-<h3 id="9-链接网址-链接图片"><a href="#9-链接网址-链接图片" class="headerlink" title="(9) 链接网址/链接图片"></a>(9) 链接网址/链接图片</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">地址：Markdown中，用[文字] (超链接地址) 来表示超链接。</span><br><span class="line">图片：Markdown中，用![图片名称(图片地址)来**图片。其中图片名称可有可无，没有的情况下用空格代替，图片地址可以为图片的URL，或者本地图片的路径</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>链接地址<br>a.代码<br><code>[百度官网](http://baidu.com/)</code><br>b.效果</li>
-</ol>
-<p><a href="http://baidu.com/" target="_blank" rel="noopener">百度官网</a></p>
-<ol start="2">
-<li>链接图片<br>a.代码</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![有道云笔记图片](http://note.youdao.com/favicon.ico)</span><br><span class="line">![天气预报]（http://cdn.heweather.com/cond_icon/309.png）</span><br></pre></td></tr></table></figure>
-
-<p>b.效果<br><img src="http://note.youdao.com/favicon.ico" alt="有道云笔记图片"></p>
-<p>![天气预报]（<a href="http://cdn.heweather.com/cond_icon/309.png）" target="_blank" rel="noopener">http://cdn.heweather.com/cond_icon/309.png）</a> </p>
-<ol start="3">
-<li>链接本地图片<br>a. 代码<br><code>![本地图片](../MarkdownExplain/head.jpg)</code><br>b. 效果</li>
-</ol>
-<p><img src="../MarkdownExplain/head.jpg" alt="本地图片"></p>
-<ol start="4">
-<li>第二种方式链接本地图片<br>a. 代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div align=center&gt;</span><br><span class="line">&lt;img src=&quot;../MarkdownExplain/head.jpg&quot; width=&quot;图片显示宽度&quot; height=&quot;显示高度&quot;</span><br><span class="line">alt=&quot;图片名称&quot;/&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>b. 效果</p>
-<div align="center">
-<img src="../MarkdownExplain/head.jpg" width="300" height="300" alt="图片名称">
-</div>
-
-<p>c. 效果</p>
-<p><img src="https://raw.githubusercontent.com/mawentaoit/picture-Reposite/master/Markdown%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B.jpg" alt="时钟图片"></p>
-
+效果这是行间代码This is inline code
+(2) 制作标题可以通过在文字左边添加#来表示标题,
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/07/02/MarkdownExplain/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
