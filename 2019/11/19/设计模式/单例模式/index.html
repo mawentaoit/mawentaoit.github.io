@@ -94,16 +94,18 @@
 
 
 
-  <meta name="description" content="技术，经验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="优雅的代码狗">
-<meta property="og:url" content="http://yoursite.com/categories/Markdown/index.html">
+  <meta name="description" content="在软件设计中，经常有些特殊的类，在整个程序的运行过程中只存在一个实例。 12345678910111213141516171819202122232425#include &amp;lt;iostream&amp;gt;#include &amp;lt;mutex&amp;gt;class Singleton&amp;#123;private:    static Singleton* m_instance;    static std">
+<meta name="keywords" content="设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单例模式">
+<meta property="og:url" content="http://yoursite.com/2019/11/19/设计模式/单例模式/index.html">
 <meta property="og:site_name" content="优雅的代码狗">
-<meta property="og:description" content="技术，经验">
+<meta property="og:description" content="在软件设计中，经常有些特殊的类，在整个程序的运行过程中只存在一个实例。 12345678910111213141516171819202122232425#include &amp;lt;iostream&amp;gt;#include &amp;lt;mutex&amp;gt;class Singleton&amp;#123;private:    static Singleton* m_instance;    static std">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-11-19T09:31:39.249Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="优雅的代码狗">
-<meta name="twitter:description" content="技术，经验">
+<meta name="twitter:title" content="单例模式">
+<meta name="twitter:description" content="在软件设计中，经常有些特殊的类，在整个程序的运行过程中只存在一个实例。 12345678910111213141516171819202122232425#include &amp;lt;iostream&amp;gt;#include &amp;lt;mutex&amp;gt;class Singleton&amp;#123;private:    static Singleton* m_instance;    static std">
 
 
 
@@ -111,7 +113,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/categories/Markdown/">
+  <link rel="canonical" href="http://yoursite.com/2019/11/19/设计模式/单例模式/">
 
 
 
@@ -121,7 +123,7 @@
   };
 </script>
 
-  <title>Category: Markdown | 优雅的代码狗</title>
+  <title>单例模式 | 优雅的代码狗</title>
   
 
 
@@ -169,7 +171,7 @@
     
   
 
-  <div class="container sidebar-position-right ">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -243,7 +245,7 @@
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
 
     
     
@@ -280,25 +282,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -323,57 +306,202 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Markdown<small>Category</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/19/设计模式/单例模式/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="优雅的代码狗">
+      <meta itemprop="description" content="技术，经验">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="优雅的代码狗">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/07/02/MarkdownExplain/" itemprop="url">
-            
-              <span itemprop="name">Markdown常用语法</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">单例模式
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-02T09:35:00+08:00" content="2019-07-02">
-          07-02
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
 
+          
+          
+          
 
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-11-19 17:08:22 / Modified: 17:31:39" itemprop="dateCreated datePublished" datetime="2019-11-19T17:08:22+08:00">2019-11-19</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/设计模式/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在软件设计中，经常有些特殊的类，在整个程序的运行过程中只存在一个实例。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mutex&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span>&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">static</span> Singleton* m_instance;</span><br><span class="line">    <span class="keyword">static</span> <span class="built_in">std</span>::mutex m_mutex;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Singleton() &#123;&#125;;</span><br><span class="line">    ~Singleton() ;</span><br><span class="line">    Singleton(<span class="keyword">const</span> Singleton&amp; s);</span><br><span class="line">    Singleton&amp; <span class="keyword">operator</span> = (<span class="keyword">const</span> Singleton&amp; s);</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">Singleton* <span class="title">get_Instance</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line">Singleton* Singleton::get_Instance() &#123;</span><br><span class="line">    <span class="keyword">if</span> (m_instance == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="comment">//加锁</span></span><br><span class="line">        <span class="built_in">std</span>::unique_lock&lt;<span class="built_in">std</span>::mutex&gt; lock(m_mutex);</span><br><span class="line">        <span class="keyword">if</span> (m_instance == <span class="literal">NULL</span>) &#123;</span><br><span class="line">            m_instance = <span class="keyword">new</span> Singleton;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> m_instance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第二种方式</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Single</span>&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">static</span> Single* m_instance;</span><br><span class="line">    Single()&#123;&#125;;</span><br><span class="line">    ~Single();</span><br><span class="line">    Single(<span class="keyword">const</span> Single&amp; s);</span><br><span class="line">    Single&amp; <span class="keyword">operator</span> = (<span class="keyword">const</span> Single&amp; s);</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">Single* <span class="title">get_Instance</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> Single* Single::m_instance = <span class="keyword">new</span> Single;</span><br><span class="line">Single* Single::Get_Instance() &#123;</span><br><span class="line">    <span class="keyword">return</span> m_instance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/19/面试/覆盖与隐藏/" rel="next" title="覆盖与隐藏的区别">
+                <i class="fa fa-chevron-left"></i> 覆盖与隐藏的区别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/19/数据结构/二叉树的递归和非递归遍历/" rel="prev" title="post">
+                post <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -653,6 +781,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
 
   
 
@@ -668,6 +800,8 @@
 
   
 
+
+  
 
 
   
